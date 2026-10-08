@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fly Podcast: mural semanal da programação, fichas dos convidados e canais oficiais do maior podcast de Angola, com Fly Skuad.">
+<meta name="theme-color" content="#121110">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fly Podcast – O sofá mais quente de Angola">
+<meta property="og:description" content="Programação da semana, fichas dos convidados e canais oficiais do Fly Podcast.">
+<meta property="og:image" content="assets/cartaz-hero.jpg">
+<title>Fly Podcast – O sofá mais quente de Angola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#121110;--panel:#1c1a17;--line:#33302a;--tx:#f3efe6;--mut:#a39d90;--gold:#e0b33a;--live:#e5484d;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;line-height:1.02;margin:0;letter-spacing:.01em}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+header{position:sticky;top:0;z-index:20;background:rgba(18,17,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:Anton,Impact,sans-serif;font-size:22px;text-decoration:none}
+.logo b{color:var(--gold);font-weight:400}
+nav{display:flex;gap:20px;font-size:14px}
+nav a{text-decoration:none;color:var(--mut)}nav a:hover{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.menu{display:none;background:none;border:1px solid var(--line);border-radius:6px;width:44px;height:44px;padding:0;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.menu span{display:block;width:20px;height:2px;background:var(--tx);transition:transform .2s,opacity .2s}
+.menu[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu[aria-expanded=true] span:nth-child(2){opacity:0}
+.menu[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.btn{display:inline-block;background:var(--gold);color:#17130a;font-weight:700;padding:12px 22px;border-radius:6px;text-decoration:none;border:0;font:700 15px Figtree,sans-serif;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:none;color:var(--tx);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+/* hero */
+.hero{padding:0;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:end;min-height:560px}
+.hero-txt{padding:64px 0}
+.hero h1{font-size:clamp(52px,9vw,112px);text-transform:uppercase}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:440px;color:var(--mut);margin:18px 0 26px}
+.hero .poster{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center top;border-radius:10px 10px 0 0;align-self:end}
+.cd{display:flex;gap:10px;margin:0 0 6px}
+.cd div{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 12px;min-width:64px;text-align:center}
+.cd b{display:block;font:400 30px Anton,Impact,sans-serif;color:var(--gold)}
+.cd small{color:var(--mut);font-size:12px}
+.next{color:var(--mut);font-size:14px;margin:14px 0 22px}
+.next strong{color:var(--tx)}
+/* mural */
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.head h2{font-size:clamp(34px,5vw,54px)}
+.head p{color:var(--mut);margin:6px 0 0;max-width:480px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.card .day{font-family:Anton,Impact,sans-serif;font-size:40px;line-height:1;color:var(--gold)}
+.card .hr{color:var(--mut);font-size:14px}
+.card h3{font-size:30px}
+.role{color:var(--mut);font-size:14px;margin:-4px 0 0}
+.card p.cta{font-size:15px;color:#d8d3c7;margin:0;flex:1}
+.badge{align-self:flex-start;font-size:13px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid var(--line)}
+.badge.live{color:var(--live);border-color:var(--live)}
+.badge.ok{color:var(--gold);border-color:var(--gold)}
+.badge.sch{color:var(--mut)}
+.badge.done{color:#6fcf97;border-color:#6fcf97}
+.card .btn{text-align:center;margin-top:6px}
+/* ficha */
+#ficha{background:var(--panel);border-block:1px solid var(--line)}
+.fh{display:flex;justify-content:space-between;align-items:start;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.fh h2{font-size:clamp(40px,7vw,80px)}
+.fcols{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
+.fcols h3{font-size:26px;color:var(--gold);margin:0 0 12px}
+.blk{margin-bottom:34px}
+.blk p{margin:0;max-width:62ch}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--gold)}
+.tl li{margin-bottom:14px}.tl b{display:block;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:22px}
+.tl span{color:#d8d3c7}
+.hot{margin:0;padding-left:20px}.hot li{margin-bottom:8px}
+.qa{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:20px}
+textarea,input{width:100%;background:#0e0d0c;color:var(--tx);border:1px solid var(--line);border-radius:6px;padding:10px;font:inherit;margin-bottom:10px}
+textarea{min-height:96px;resize:vertical}
+#qs{list-style:none;padding:0;margin:14px 0 0;font-size:14px;color:#d8d3c7}
+#qs li{border-top:1px solid var(--line);padding:8px 0}
+.ph{border:1px dashed var(--line);border-radius:10px;padding:26px;text-align:center;color:var(--mut);margin-bottom:34px;font-size:14px}
+/* sobre */
+.about{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);gap:40px;align-items:start}
+.about .pics{display:grid;gap:12px;max-width:300px}
+.about .pics img{border-radius:10px;width:100%;object-fit:cover}
+.about .pics img:first-child{aspect-ratio:4/5;object-position:center 25%}
+.about .pics img:nth-child(2){aspect-ratio:1/1;object-position:center 30%}.about .pics img:nth-child(3){aspect-ratio:1/1;object-position:center 20%}
+.about h2{font-size:clamp(38px,6vw,68px);margin-bottom:6px}
+.real{color:var(--gold);font-size:14px;margin:0 0 18px}
+.about p{max-width:60ch}
+.proj{display:grid;gap:12px;margin:26px 0}
+.proj div{border-left:3px solid var(--gold);padding:2px 0 2px 14px}
+.proj b{display:block}.proj span{color:var(--mut);font-size:15px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:8px}
+.stats b{display:block;font:400 34px Anton,Impact,sans-serif;color:var(--gold)}
+.stats small{color:var(--mut)}
+/* canais */
+.ch{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ch a{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;text-decoration:none;display:block}
+.ch a:hover{border-color:var(--gold)}
+.ch b{font:400 26px Anton,Impact,sans-serif;display:block}
+.ch span{color:var(--mut);font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:1000px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .ch{grid-template-columns:1fr 1fr}
+ .hero .wrap{gap:20px}
+}
+@media(max-width:820px){
+ .hero .wrap,.about,.fcols{grid-template-columns:1fr}
+ .hero .wrap{min-height:0;gap:0}
+ .hero .poster{order:-1;max-width:560px;margin:0 auto;border-radius:0 0 10px 10px}
+ .hero-txt{padding:28px 0 44px}
+ .hero h1{font-size:clamp(46px,13vw,84px)}
+ .hero p{max-width:none}
+ .about .pics{grid-template-columns:repeat(3,1fr);max-width:none;gap:8px}
+ .about .pics img{aspect-ratio:3/4!important;max-height:210px}
+ .menu{display:flex}
+ nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 20px 12px}
+ nav.open{display:flex}
+ nav a{padding:14px 0;font-size:17px;color:var(--tx);border-bottom:1px solid var(--line)}
+ nav a:last-child{border-bottom:0}
+ section{padding:52px 0}
+}
+@media(max-width:600px){
+ .grid,.ch{grid-template-columns:1fr}
+ .cd{gap:8px}.cd div{min-width:0;flex:1;padding:8px 6px}
+ .btn{width:100%;text-align:center}
+ .card h3{font-size:28px}
+ .stats{gap:20px}
+ footer .wrap{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="logo" href="#topo" aria-label="Fly Podcast, início"><img src="assets/logo.png" alt="Fly Podcast" height="46" style="height:46px;width:auto"></a>
+ <button class="menu" id="mb" aria-label="Abrir menu" aria-expanded="false" aria-controls="nv"><span></span><span></span><span></span></button>
+ <nav id="nv"><a href="#mural">Mural da semana</a><a href="#ficha">Convidado</a><a href="#sobre">Fly Skuad</a><a href="#canais">Canais</a></nav>
+</div></header>
+
+<div id="topo" class="hero"><div class="wrap">
+ <div class="hero-txt">
+  <p style="margin:0 0 10px;color:var(--gold);font-weight:700">Com Fly Skuad · Luanda</p>
+  <h1>O sofá mais <span>quente</span> de Angola</h1>
+  <p>Saiba quem se senta no sofá esta semana, leia a ficha do convidado antes do direto e deixe a sua pergunta para o Fly Skuad.</p>
+  <div class="next">Próximo direto: <strong id="nx-name"></strong> · <span id="nx-when"></span></div>
+  <div class="cd" aria-live="off"><div><b id="d">--</b><small>dias</small></div><div><b id="h">--</b><small>horas</small></div><div><b id="m">--</b><small>min</small></div><div><b id="s">--</b><small>seg</small></div></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+   <a class="btn" href="https://www.youtube.com/@FlySkuad.oficial" target="_blank" rel="noopener">Lembrar no YouTube</a>
+   <a class="btn ghost" href="#mural">Ver a semana</a>
+  </div>
+ </div>
+ <img class="poster" src="assets/cartaz-hero.jpg" alt="Cartaz do Fly Podcast com Fly Skuad, transmissão em direto no YouTube e Facebook">
+</div></div>
+
+<section id="mural"><div class="wrap">
+ <div class="head"><div><h2>Mural da semana</h2><p>Os próximos convidados, com dia, hora de Luanda e estado do episódio.</p></div></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="ficha"><div class="wrap" id="fbox"></div></section>
+
+<section id="sobre"><div class="wrap about">
+ <div class="pics">
+  <img src="assets/fly-trofeu.jpg" alt="Fly Skuad com o troféu de Prémio de Ação Social do Ano e um quadro pintado">
+  <img src="assets/fly-laranja.jpg" alt="Fly Skuad de fato laranja junto a uma piscina"><img src="assets/fly-estudio.jpg" alt="Fly Skuad sentado no sofá do estúdio do Fly Podcast">
+ </div>
+ <div>
+  <h2>Fly Skuad</h2>
+  <p class="real">Filipe Nunda Quiala · Luanda, 7 de março de 1988</p>
+  <p>Rapper, empreendedor, criador de conteúdos e influenciador digital angolano, com forte influência no hip-hop e no ecossistema digital de Angola. É a cara do Fly Podcast, um dos maiores programas de entrevistas do país e do espaço lusófono.</p>
+  <div class="proj">
+   <div><b>Reis do Rompimento Primeira Liga (RRPL)</b><span>Fundada em 2013, tornou-se a principal liga de batalhas de rap em Angola e impulsionou a carreira de vários artistas.</span></div>
+   <div><b>Fly Skuad TV / Fly Podcast</b><span>Entrevistas e conversas transmitidas no YouTube, por vezes com episódios gravados em Lisboa.</span></div>
+   <div><b>Prémio de Ação Social do Ano</b><span>Atribuído pela Câmara de Comércio e Indústria de Angola, pela mobilização de apoios a famílias vulneráveis através das suas plataformas.</span></div>
+   <div><b>Powerlist Bantumen</b><span>Presença habitual na lista de influência da Bantumen.</span></div>
+  </div>
+  <div class="stats">
+   <div><b>676 mil</b><small>inscritos no YouTube</small></div>
+   <div><b>2 milhões</b><small>seguidores @flyskuad</small></div>
+   <div><b>448+</b><small>episódios do podcast</small></div>
+  </div>
+ </div>
+</div></section>
+
+<section id="canais" style="padding-top:0"><div class="wrap">
+ <div class="head"><h2>Siga os canais oficiais</h2></div>
+ <div class="ch">
+  <a href="https://www.youtube.com/@FlySkuad.oficial" target="_blank" rel="noopener"><b>Fly Skuad TV</b><span>Episódios completos e diretos no YouTube</span></a>
+  <a href="https://www.instagram.com/flypodcast.oficial/" target="_blank" rel="noopener"><b>@flypodcast.oficial</b><span>Cortes, novidades e bastidores no Instagram</span></a>
+  <a href="https://www.instagram.com/flyskuad/" target="_blank" rel="noopener"><b>@flyskuad</b><span>O Instagram pessoal do apresentador</span></a>
+ </div>
+</div></section>
+
+<footer><div class="wrap"><span><img src="assets/logo.png" alt="" style="height:56px;width:auto;margin-bottom:10px"><br>© 2026 Fly Podcast. Site em desenvolvimento.</span><span>Conteúdo dos convidados em exemplo, a validar antes de publicar.</span></div></footer>
+
+<script>
+var G=[
+{id:"kid",day:"Terça",date:"2026-10-13T19:00:00+01:00",hr:"13 Out · 19:00 (Luanda)",name:"Kid MC",role:"Voz do Rap Consciência",st:"CONFIRMADO",cls:"ok",
+ cta:"O “Incorruptível” regressa ao sofá para passar a pente fino o estado do hip-hop angolano e o impacto das suas letras na nova geração.",
+ perfil:"Sebastian de Magalhães, conhecido como Kid MC, é uma das vozes mais respeitadas do Rap Consciência em Angola. A carreira assenta na integridade lírica e na recusa do circuito estritamente comercial, e fez dele porta-voz das vivências da juventude urbana angolana.",
+ tl:[["2008","Álbum de estreia “Caminhos”."],["2010","“O Incorruptível” consolida-o como força lírica."],["2020","Projeto “O Regresso do Rei”, com crítica social mais afiada."]],
+ temas:["A evolução (ou retrocesso) das mensagens no rap angolano atual.","O streaming e a independência financeira dos artistas em Luanda.","Rixas históricas e a união entre a velha e a nova escola."],
+ pq:"Qual é a rima do Kid MC que mudou a tua forma de pensar?",
+ rec:["Livro: “Mayombe”, de Pepetela","Álbum: “O Incorruptível”"]},
+{id:"lau",day:"Quinta",date:"2026-10-15T19:00:00+01:00",hr:"15 Out · 19:00 (Luanda)",name:"Dr. Laurindo Ngola",role:"Economista e consultor financeiro",st:"CONFIRMADO",cls:"ok",
+ cta:"Como sobreviver e prosperar na economia atual de Angola? Um analista financeiro desmistifica o mercado, o empreendedorismo jovem e o custo de vida.",
+ perfil:"O Dr. Laurindo Ngola é economista, consultor financeiro e docente universitário. Traduz termos macroeconómicos para a linguagem do cidadão comum e foca-se em soluções práticas para o desenvolvimento privado. (Perfil fictício, para teste.)",
+ tl:[["2015","Diretor de Análise de Risco num banco comercial."],["2019","Livro de bolso “Poupar em Luanda”."],["2024","Projeto de literacia financeira para jovens empreendedores."]],
+ temas:["Diversificação económica fora do setor petrolífero.","Inflação e pequenos negócios de bairro: kinguilas, cantinas e startups.","Emprego jovem e competências mais procuradas."],
+ pq:"Tens uma ideia de negócio? Expõe o teu caso ao Dr. Laurindo.",
+ rec:["Relatório anual sobre mercados africanos","Apps de gestão de orçamento para pequenos negócios"]},
+{id:"gil",day:"Sábado",date:"2026-10-17T20:00:00+01:00",hr:"17 Out · 20:00 (Luanda)",name:"Gilmário Vemba",role:"Humorista",st:"AGENDADO",cls:"sch",
+ cta:"O humorista que conquistou a lusofonia senta-se no sofá para uma conversa sem filtros sobre comédia, fama e bastidores do espetáculo.",
+ perfil:"Gilmário Vemba é um dos grandes embaixadores do humor angolano no estrangeiro. Antigo integrante do grupo “Os Tuneza”, reinventou-se a solo e leva as vivências angolanas a salas em Angola e Portugal.",
+ tl:[["2003","Co-fundador do grupo “Os Tuneza”."],["2019","Início da carreira a solo com o espetáculo “Imortal”."],["2023–2025","Programas de televisão e rádio em Portugal."]],
+ temas:["Os limites do humor em Angola: do que se pode rir?","Adaptar o humor ao público europeu sem perder a essência africana.","Ego e saúde mental num mercado de exposição digital extrema."],
+ pq:"Qual é o teu sketch favorito do Gilmário? Deixa a pergunta para o direto.",
+ rec:["Dica do convidado: ver teatro clássico para ganhar presença de palco"]}
+];
+var $=function(i){return document.getElementById(i)};
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+$("grid").innerHTML=G.map(function(g){return '<article class="card"><div class="day">'+g.day+'</div><div class="hr">'+g.hr+'</div><span class="badge '+g.cls+'">'+g.st+'</span><h3>'+g.name+'</h3><p class="role">'+g.role+'</p><p class="cta">'+g.cta+'</p><button class="btn" data-g="'+g.id+'">Ver ficha completa</button></article>'}).join("");
+$("grid").addEventListener("click",function(e){var b=e.target.closest("button[data-g]");if(b){show(b.dataset.g,true)}});
+var asked={};
+function show(id,scroll){
+ var g=G.filter(function(x){return x.id===id})[0];asked[id]=asked[id]||[];
+ $("fbox").innerHTML='<div class="fh"><div><span class="badge '+g.cls+'">'+g.st+'</span><h2 style="margin-top:10px">'+g.name+'</h2><p class="role">'+g.role+' · '+g.hr+'</p></div><a class="btn" href="https://www.youtube.com/@FlySkuad.oficial" target="_blank" rel="noopener">Ver no YouTube</a></div>'+
+ '<div class="ph">O vídeo do YouTube é incorporado aqui depois do episódio e esta página passa a ser o arquivo do convidado.</div>'+
+ '<div class="fcols"><div><div class="blk"><h3>Quem é</h3><p>'+g.perfil+'</p></div>'+
+ '<div class="blk"><h3>Linha do tempo</h3><ul class="tl">'+g.tl.map(function(t){return '<li><b>'+t[0]+'</b><span>'+t[1]+'</span></li>'}).join("")+'</ul></div>'+
+ '<div class="blk"><h3>Temas na mesa</h3><ul class="hot">'+g.temas.map(function(t){return '<li>'+t+'</li>'}).join("")+'</ul></div>'+
+ '<div class="blk"><h3>Notas e recomendações</h3><ul class="hot">'+g.rec.map(function(t){return '<li>'+t+'</li>'}).join("")+'</ul></div></div>'+
+ '<aside><div class="qa"><h3 style="color:var(--gold);font-size:26px;margin-bottom:6px">Deixe a sua pergunta</h3><p style="margin:0 0 12px;color:var(--mut);font-size:14px">'+g.pq+'</p><input id="qn" placeholder="O seu nome" aria-label="O seu nome"><textarea id="qt" placeholder="A sua pergunta para o Fly Skuad" aria-label="A sua pergunta"></textarea><button class="btn" id="qb">Enviar pergunta</button><ul id="qs"></ul></div></aside></div>';
+ draw(id);
+ $("qb").onclick=function(){var t=$("qt").value.trim();if(!t){$("qt").focus();return}asked[id].unshift((($("qn").value.trim())||"Anónimo")+": "+t);$("qt").value="";draw(id)};
+ if(scroll)$("ficha").scrollIntoView();
+}
+function draw(id){$("qs").innerHTML=asked[id].map(function(q){return "<li>"+esc(q)+"</li>"}).join("")}
+show("kid",false);
+var T=G[0];$("nx-name").textContent=T.name;$("nx-when").textContent=T.hr;
+function tick(){var ms=new Date(T.date)-new Date();if(ms<0)ms=0;var s=Math.floor(ms/1000);
+ $("d").textContent=Math.floor(s/86400);$("h").textContent=String(Math.floor(s%86400/3600)).padStart(2,"0");$("m").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");$("s").textContent=String(s%60).padStart(2,"0")}
+tick();setInterval(tick,1000);
+var mb=$("mb"),nv=$("nv");
+function tg(o){nv.classList.toggle("open",o);mb.setAttribute("aria-expanded",o);mb.setAttribute("aria-label",o?"Fechar menu":"Abrir menu")}
+mb.onclick=function(){tg(!nv.classList.contains("open"))};
+nv.addEventListener("click",function(e){if(e.target.tagName==="A")tg(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")tg(false)});
+</script>
+</body>
+</html>
