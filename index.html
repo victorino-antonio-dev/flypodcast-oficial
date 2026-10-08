@@ -211,13 +211,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <script>
 var G=[
-{id:"kid",day:"Terça",date:"2026-10-13T19:00:00+01:00",hr:"13 Out · 19:00 (Luanda)",name:"Kid MC",role:"Voz do Rap Consciência",st:"CONFIRMADO",cls:"ok",
- cta:"O “Incorruptível” regressa ao sofá para passar a pente fino o estado do hip-hop angolano e o impacto das suas letras na nova geração.",
- perfil:"Sebastian de Magalhães, conhecido como Kid MC, é uma das vozes mais respeitadas do Rap Consciência em Angola. A carreira assenta na integridade lírica e na recusa do circuito estritamente comercial, e fez dele porta-voz das vivências da juventude urbana angolana.",
- tl:[["2008","Álbum de estreia “Caminhos”."],["2010","“O Incorruptível” consolida-o como força lírica."],["2020","Projeto “O Regresso do Rei”, com crítica social mais afiada."]],
- temas:["A evolução (ou retrocesso) das mensagens no rap angolano atual.","O streaming e a independência financeira dos artistas em Luanda.","Rixas históricas e a união entre a velha e a nova escola."],
- pq:"Qual é a rima do Kid MC que mudou a tua forma de pensar?",
- rec:["Livro: “Mayombe”, de Pepetela","Álbum: “O Incorruptível”"]},
+{id:"sam",day:"Terça",date:"2026-10-13T19:00:00+01:00",hr:"13 Out · 19:00 (Luanda)",name:"DJ Samurai",role:"DJ e produtor, pioneiro das mixtapes de hip-hop",st:"CONFIRMADO",cls:"ok",
+ cta:"O homem por trás das primeiras mixtapes de hip-hop em Angola senta-se no sofá para contar como nasceu o deejaying nas ruas de Luanda.",
+ perfil:"Luís Queiróz, o DJ Samurai (Luanda, 25 de julho de 1976), é DJ, produtor musical e designer gráfico, e uma referência obrigatória quando se fala de deejaying em Angola. Ressurgiu com turntables no final dos anos 90, com iniciativas como as primeiras mixtapes de hip-hop em Angola e a Mad Tapes Entertainment, uma gravadora exclusiva para o hip-hop.",
+ tl:[["1976","Nasce em Luanda."],["1999","Mixtape “Ruas de Luanda”, a primeira feita em Angola com MCs angolanos."],["2002","“A Ciphra da Lua Negra”, com os Ishing (Raf Tag e DJ Samurai)."],["2003","Lança “O Último Samurai Vol.01”, seguido do Vol.02 em 2010."]],
+ temas:["Como nasceram as primeiras mixtapes de hip-hop em Angola.","A Mad Tapes e a cultura hip-hop de Luanda desde os anos 90.","Do vinil às plataformas digitais: como mudou a vida do DJ.","Do DJ ao designer gráfico: as capas e a imagem do hip-hop angolano."],
+ pq:"Qual é a mixtape ou a memória do DJ Samurai que marcou a tua juventude?",
+ rec:["Mixtape: “Ruas de Luanda” (1999)","Mixtape: “O Último Samurai Vol.01” (2003)"]},
 {id:"lau",day:"Quinta",date:"2026-10-15T19:00:00+01:00",hr:"15 Out · 19:00 (Luanda)",name:"Dr. Laurindo Ngola",role:"Economista e consultor financeiro",st:"CONFIRMADO",cls:"ok",
  cta:"Como sobreviver e prosperar na economia atual de Angola? Um analista financeiro desmistifica o mercado, o empreendedorismo jovem e o custo de vida.",
  perfil:"O Dr. Laurindo Ngola é economista, consultor financeiro e docente universitário. Traduz termos macroeconómicos para a linguagem do cidadão comum e foca-se em soluções práticas para o desenvolvimento privado. (Perfil fictício, para teste.)",
@@ -252,7 +252,7 @@ function show(id,scroll){
  if(scroll)$("ficha").scrollIntoView();
 }
 function draw(id){$("qs").innerHTML=asked[id].map(function(q){return "<li>"+esc(q)+"</li>"}).join("")}
-show("kid",false);
+show("sam",false);
 var T=G[0];$("nx-name").textContent=T.name;$("nx-when").textContent=T.hr;
 function tick(){var ms=new Date(T.date)-new Date();if(ms<0)ms=0;var s=Math.floor(ms/1000);
  $("d").textContent=Math.floor(s/86400);$("h").textContent=String(Math.floor(s%86400/3600)).padStart(2,"0");$("m").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");$("s").textContent=String(s%60).padStart(2,"0")}
